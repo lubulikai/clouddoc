@@ -1,0 +1,45 @@
+directories:
+  output: dist
+  buildResources: assets
+appId: cloudDoc
+productName: 七牛云文档
+copyright: 'Copyright © 2019 ${author}'
+files:
+  - filter:
+      - build/**/*
+      - node_modules/**/*
+      - settings/**/*
+      - package.json
+extraMetadata:
+  main: ./build/main.js
+extends: null
+mac:
+  category: public.app-category.productivity
+  artifactName: '${productName}-${version}-${arch}.${ext}'
+dmg:
+  background: assets/appdmg.png
+  icon: assets/icon.icns
+  iconSize: 100
+  contents:
+    - x: 380
+      'y': 280
+      type: link
+      path: /Applications
+    - x: 110
+      'y': 280
+      type: file
+  window:
+    width: 500
+    height: 500
+win:
+  target:
+    - msi
+    - nsis
+  icon: assets/icon.ico
+  artifactName: '${productName}-Web-Setup-${version}.${ext}'
+  publisherName: zj
+nsis:
+  allowToChangeInstallationDirectory: true
+  oneClick: false
+  perMachine: false
+electronVersion: 5.0.11
